@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
@@ -9,14 +9,19 @@ import Settings from './pages/Settings';
 import Navbar from './components/Navbar';
 import './styles/App.css';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+
+  // Hide Navbar on /login route
+  const hideNavbar = location.pathname === '/login';
+
   React.useEffect(() => {
     document.title = 'XPENCE';
   }, []);
 
   return (
-    <Router>
-      <Navbar />
+    <>
+      {!hideNavbar && <Navbar />}
       <div className="container">
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -27,6 +32,14 @@ function App() {
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
