@@ -24,14 +24,21 @@
 }
 
 .nav-link {
+  padding: 8px 18px;
+  border-radius: 8px;
+  color: #1ABC9C;
   text-decoration: none;
-  color: #ecf0f1;
   font-weight: 500;
-  transition: color 0.2s ease-in-out;
+  transition: background 0.2s, color 0.2s;
 }
 
 .nav-link:hover {
-  color: #1ABC9C;
+  color: #ede7fa;
+}
+
+.nav-link.active {
+  background: #FDCB6E; /* Highlight color */
+  color: #222;
 }
 
 .nav-login {
@@ -43,5 +50,13 @@
 }
 
 .nav-login:hover {
-  background-color: #16A085;
+  background-color: #ede7fa;
+}
+
+.brand_yellow {
+  color: #FDCB6E;
+}
+
+.brand_white {
+  color: #ede7fa;
 }

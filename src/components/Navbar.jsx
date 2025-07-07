@@ -5,14 +5,58 @@ import '../styles/Navbar.css';
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="navbar__brand">XPENCE</div>
+      <div className="navbar__brand">
+        <span className="brand_yellow">X</span> <span className='brand_white'>PENCE</span>
+      </div>
       <ul className="navbar__links">
-        <li><NavLink to="/" className="nav-link">Dashboard</NavLink></li>
-        <li><NavLink to="/transactions" className="nav-link">Transactions</NavLink></li>
-        <li><NavLink to="/income" className="nav-link">Income</NavLink></li>
-        <li><NavLink to="/expenses" className="nav-link">Expenses</NavLink></li>
-        <li><NavLink to="/settings" className="nav-link">Settings</NavLink></li>
-        <li><NavLink to="/login" className="nav-link nav-login">Login</NavLink></li>
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+          >
+            Dashboard
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/transactions"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+          >
+            Transactions
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/income"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+          >
+            Income
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/expenses"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+          >
+            Expenses
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/settings"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+          >
+            Settings
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/login"
+            className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+          >
+            Login
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
