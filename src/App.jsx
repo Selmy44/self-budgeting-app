@@ -1,45 +1,33 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
 import Expenses from './pages/Expenses';
 import Income from './pages/Income';
 import Settings from './pages/Settings';
-import Navbar from './components/Navbar';
+import MobileMoney from './pages/MobileMoney';
+import EquityBank from './pages/EquityBank';
+import Cash from './pages/Cash';
 import './styles/App.css';
-
-function AppContent() {
-  const location = useLocation();
-
-  // Hide Navbar on /login route
-  const hideNavbar = location.pathname === '/login';
-
-  React.useEffect(() => {
-    document.title = 'XPENCE';
-  }, []);
-
-  return (
-    <>
-      {!hideNavbar && <Navbar />}
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/transactions" element={<Transactions />} />
-          <Route path="/expenses" element={<Expenses />} />
-          <Route path="/income" element={<Income />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
-      </div>
-    </>
-  );
-}
 
 function App() {
   return (
     <Router>
-      <AppContent />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/income" element={<Income />} />
+          <Route path="/expenses" element={<Expenses />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/MobileMoney" element={<MobileMoney />} />
+          <Route path="/EquityBank" element={<EquityBank />} />
+          <Route path="/Cash" element={<Cash />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

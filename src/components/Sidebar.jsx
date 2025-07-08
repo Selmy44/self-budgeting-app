@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import '../styles/Components.css';
 
 function Sidebar() {
@@ -9,12 +10,53 @@ function Sidebar() {
           <span className="section-title">MY ACCOUNTS</span>
           <button className="add-account-btn">+</button>
         </div>
-        <ul className="account-list">
-          <li className="active">All Accounts</li>
-          <li>Mobile Money</li>
-          <li>Equity Bank</li>
-          <li>Cash</li>
+        <ul className="sidebar-nav">
+          <div className="account-list">
+            <li className="active">All Accounts</li>
+          </div>
+          
+          <li>
+            <NavLink to="/" className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
+              Dashboard
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/transactions" className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
+              Transactions
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/income" className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
+              Income
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/expenses" className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
+              Expenses
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/settings" className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
+              Settings
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/MobileMoney" className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
+              Mobile Money
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/EquityBank" className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
+              Equity Bank
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/Cash" className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
+              Cash
+            </NavLink>
+          </li>
         </ul>
+
         <div className="sidebar-divider" />
         <ul className="sidebar-section-bottom" style={{ marginTop: '2px', marginBottom: '0' }}>
           <li>

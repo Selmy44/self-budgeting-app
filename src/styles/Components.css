@@ -211,3 +211,26 @@
   align-items: center;
   margin-left: 8px;
 }
+
+.sidebar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 12px 0;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 10px 0 10px 0;
+  color: #5F27CD;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-bottom: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-link.active,
+.sidebar-link:hover {
+  background: #ede7fa;
+  color: #222;
+}
