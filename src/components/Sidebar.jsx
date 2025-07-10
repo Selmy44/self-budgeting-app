@@ -73,11 +73,10 @@ function Sidebar() {
       </div>
 
       <div className="sidebar-logout">
-        <a href="#" className="logout-link">
+        <NavLink to="/Logout" className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}>
           Logout
-        </a>
+        </NavLink>
         <span className="logout-icon" role="img" aria-label="logout">
-          {/* Use a right arrow out icon for clarity */}
           <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
             <path d="M13 15l5-5-5-5M18 10H7M7 19a2 2 0 01-2-2V3a2 2 0 012-2h4" stroke="#5F27CD" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
