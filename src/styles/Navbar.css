@@ -1,37 +1,166 @@
-/* styles/Navbar.css */
+/*NAVBAR BASE STYLING*/
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #6a1b9a;
-  color: white;
-  padding: 1rem 2rem;
-  height: 64px;
+  background-color: white;
+  padding: 0.5rem 1.5rem;
+  height: 56px;
+  border-bottom: 1px solid #e0e0e0;
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
-.navbar-left .logo {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #ffcb05;
+.navbar-left {
+  display: flex;
+  align-items: center;
 }
 
 .navbar-right {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  position: relative;
+  cursor: pointer;
 }
 
+/* TOGGLE BUTTON*/
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: #6a1b9a;
+  display: inline-block;
+}
+
+/*LOGO*/
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo-x {
+  color: #FFCB05; /* Yellow */
+}
+
+.logo-pence {
+  color: #6a1b9a; /* Purple */
+}
+
+/* --------------------
+   PROFILE IMAGE + NAME
+-------------------- */
 .profile-pic {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 9999px;
   object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
 }
 
 .profile-name {
   font-size: 0.875rem;
-  color: white;
+  color: #333;
+}
+
+/* --------------------
+   DROPDOWN MENU
+-------------------- */
+.dropdown-menu {
+  position: absolute;
+  top: 56px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 200px;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s ease;
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu li:hover {
+  background-color: #f7f7f7;
+}
+
+/* --------------------
+   DROPDOWN ANIMATION
+-------------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------
+   RESPONSIVE
+-------------------- */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .navbar-left {
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar-right {
+    margin-top: 0.5rem;
+    width: auto;
+    justify-content: flex-end;
+  }
+
+  .dropdown-menu {
+    right: 0;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+.toggle-btn {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-right: 1rem;
+}
+
+.toggle-btn.open {
+  transform: rotate(180deg); /* Animate the ✕ icon */
 }

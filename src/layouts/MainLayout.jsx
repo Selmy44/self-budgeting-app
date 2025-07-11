@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import '../styles/Layout.css';
 
 function MainLayout() {
-  return (
-    <div className="app-layout" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Top Navbar */}
-      <Navbar />
+  const [sidebarOpen, setSidebarOpen] = useState(
+    () => localStorage.getItem('sidebarOpen') === 'true'
+  );
+  const location = useLocation();
 
-      {/* Body: Sidebar + Page Content */}
-      <div style={{ display: 'flex', flex: 1 }}>
-        <Sidebar />
-        <main style={{ flex: 1, padding: '2rem', backgroundColor: '#f9f9fb' }}>
+  // Close on route change (mobile only)
+  useEffect(() => {
+    if (window.innerWidth < 768) setSidebarOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    localStorage.setItem('sidebarOpen', sidebarOpen);
+  }, [sidebarOpen]);
+
+  return (
+    <div className={`layout ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+      <Navbar onToggleSidebar={() => setSidebarOpen(prev => !prev)} isOpen={sidebarOpen} />
+
+      <div className="layout-body">
+        <Sidebar isOpen={sidebarOpen} />
+        <main className="main-content">
           <Outlet />
         </main>
       </div>
