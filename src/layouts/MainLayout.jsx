@@ -10,7 +10,6 @@ function MainLayout() {
   );
   const location = useLocation();
 
-  // Close on route change (mobile only)
   useEffect(() => {
     if (window.innerWidth < 768) setSidebarOpen(false);
   }, [location.pathname]);
@@ -20,8 +19,8 @@ function MainLayout() {
   }, [sidebarOpen]);
 
   return (
-    <div className={`layout ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
-      <Navbar onToggleSidebar={() => setSidebarOpen(prev => !prev)} isOpen={sidebarOpen} />
+    <div className={`app-layout ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+      <Navbar onToggleSidebar={() => setSidebarOpen((prev) => !prev)} isOpen={sidebarOpen} />
 
       <div className="layout-body">
         <Sidebar isOpen={sidebarOpen} />

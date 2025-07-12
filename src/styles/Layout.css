@@ -24,20 +24,24 @@
   transform: translateX(-240px);
 }
 
+/* Default content fill */
 .main-content {
   flex-grow: 1;
   padding: 2rem;
   background-color: #f9f9fb;
-  transition: margin-left 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.layout.sidebar-open .main-content {
+/* Shift content when sidebar is open */
+.app-layout.sidebar-open .main-content {
+  margin-left: 240px;
+}
+
+/* Reset content when sidebar is closed */
+.app-layout.sidebar-closed .main-content {
   margin-left: 0;
 }
 
-.layout.sidebar-closed .main-content {
-  margin-left: 0;
-}
 
 @media (max-width: 768px) {
   .sidebar {
