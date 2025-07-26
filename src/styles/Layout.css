@@ -1,48 +1,43 @@
-.layout {
+/* Container layout */
+.app-layout {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.layout-body {
-  display: flex;
-  flex: 1;
   transition: all 0.3s ease;
 }
 
+/* Sidebar styles */
 .sidebar {
   width: 240px;
-  transition: margin 0.3s ease, transform 0.3s ease;
-  background-color: #fff;
-  border-right: 1px solid #e0e0e0;
-  height: calc(100vh - 56px);
-  position: relative;
-  z-index: 2;
+  transition: all 0.3s ease;
+  background: #fff;
+  height: calc(100vh - 64px);
+  overflow: hidden;
 }
 
 .sidebar.closed {
-  transform: translateX(-240px);
+  width: 0;
 }
 
-/* Default content fill */
+/* Main content styles */
 .main-content {
-  flex-grow: 1;
-  padding: 2rem;
-  background-color: #f9f9fb;
+  flex: 1;
   transition: all 0.3s ease;
+  padding: 24px;
+  background: #faf9ff;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
 }
 
-/* Shift content when sidebar is open */
+/* Push content when sidebar is open */
 .app-layout.sidebar-open .main-content {
-  margin-left: 240px;
+  margin-left: 0; /* no offset needed */
 }
 
-/* Reset content when sidebar is closed */
+/* Expand content when sidebar is closed */
 .app-layout.sidebar-closed .main-content {
-  margin-left: 0;
+  width: 100%;
 }
 
-
+/* Mobile: Sidebar overlay */
 @media (max-width: 768px) {
   .sidebar {
     position: absolute;
@@ -55,9 +50,12 @@
 
   .sidebar.closed {
     transform: translateX(-100%);
+    transition: transform 0.3s ease;
   }
 
-  .main-content {
+  .app-layout.sidebar-closed .main-content,
+  .app-layout.sidebar-open .main-content {
     margin-left: 0 !important;
+    width: 100%;
   }
 }

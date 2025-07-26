@@ -18,10 +18,10 @@ function Profile() {
         <input type="text" value="Selmy NSHUTI" readOnly />
 
         <label>Email</label>
-        <input type="email" value="selmynshuti@awesome.rw" readOnly />
+        <input type="email" value="snshuti@centrika.rw" readOnly />
 
         <label>Phone</label>
-        <input type="text" value="+250 789 000 000" readOnly />
+        <input type="text" value="+250 781674354" readOnly />
 
         <h2>Edit Password</h2>
         <div className="password-section">
@@ -35,7 +35,7 @@ function Profile() {
           </div>
         </div>
 
-        <button className="save-btn" disabled>Save Changes</button>
+        <button className="save-btn" >Save Changes</button>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import '../styles/Components.css';
 
 function Sidebar({ isOpen }) {
   return (
-    <div className={`sidebar ${isOpen ? '' : 'closed'}`}>
+    <div className={`sidebar${isOpen ? ' open' : ' closed'}`}>
       <div>
         <div className="sidebar-accounts-header">
           <span className="section-title">MY ACCOUNTS</span>

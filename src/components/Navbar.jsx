@@ -36,7 +36,6 @@ function Navbar({ onToggleSidebar, isOpen }) {
           <span className="logo-pence">PENCE</span>
         </h2>
       </div>
-
       <div className="navbar-right" ref={dropdownRef}>
         <img
           src={profileImg}

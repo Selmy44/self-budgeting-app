@@ -5,28 +5,24 @@ import { Outlet, useLocation } from 'react-router-dom';
 import '../styles/Layout.css';
 
 function MainLayout() {
-  const [sidebarOpen, setSidebarOpen] = useState(
-    () => localStorage.getItem('sidebarOpen') === 'true'
-  );
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
     if (window.innerWidth < 768) setSidebarOpen(false);
   }, [location.pathname]);
 
-  useEffect(() => {
-    localStorage.setItem('sidebarOpen', sidebarOpen);
-  }, [sidebarOpen]);
+  const handleToggleSidebar = () => setSidebarOpen((prev) => !prev);
 
   return (
-    <div className={`app-layout ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
-      <Navbar onToggleSidebar={() => setSidebarOpen((prev) => !prev)} isOpen={sidebarOpen} />
+    <div className="main-root">
+      <Navbar onToggleSidebar={handleToggleSidebar} isOpen={sidebarOpen} />
 
-      <div className="layout-body">
+      <div className={`app-layout ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
         <Sidebar isOpen={sidebarOpen} />
-        <main className="main-content">
+        <div className="main-content">
           <Outlet />
-        </main>
+        </div>
       </div>
     </div>
   );
